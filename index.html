@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flow Forge Lab | AI Automation for Small Businesses</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"></script>
+    <style>
+        :root {
+            /* Color Palette */
+            --primary: #3457D5;       /* Bright Blue - innovation, trust */
+            --primary-light: #5E7AE9; /* Lighter Blue for hover states */
+            --secondary: #FF7F50;     /* Coral Orange - warmth, approachability */
+            --dark: #1E293B;          /* Dark Blue-Gray - professionalism */
+            --light: #F8FAFC;         /* Off-White - clean, modern */
+            --gray: #64748B;          /* Neutral Gray for text */
+            --success: #10B981;       /* Green for success indicators */
+            
+            /* Typography */
+            --heading-font: 'Montserrat', sans-serif;
+            --body-font: 'Inter', sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--body-font);
+            color: var(--dark);
+            line-height: 1.6;
+            background-color: var(--light);
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--heading-font);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+        }
+        
+        h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1.5rem;
+        }
+        
+        h3 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            margin-bottom: 1rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            color: var(--gray);
+        }
+        
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        a:hover {
+            color: var(--primary-light);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 500;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-light);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #ff936a;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .btn-large {
+            padding: 16px 32px;
+            font-size: 1.1rem;
+        }
+        
+        /* Header */
+        header {
+            padding: 20px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-family: var(--heading-font);
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--dark);
+        }
+        
+        .logo-icon {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-link {
+            margin-left: 30px;
+            font-weight: 500;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 100px;
+            background: linear-gradient(120deg, #f8fafc 0%, #e0e7ff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+        
+        .hero-text {
+            flex: 1;
+        }
+        
+        .hero-subheadline {
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            margin-bottom: 30px;
+            color: var(--gray);
+        }
+        
+        .hero-image {
+            flex: 1;
+            max-width: 500px;
+        }
+        
+        .hero-img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        
+        /* Problems Section */
+        .problems {
+            background-color: white;
+        }
+        
+        .problems-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .problems-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+            width: 100%;
+        }
+        
+        .problem-item {
+            background-color: var(--light);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .problem-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .problem-icon {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+        
+        /* Solutions Section */
+        .solutions {
+            background-color: var(--light);
+        }
+        
+        .solutions-intro {
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+        
+        .solutions-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .solution-item {
+            background-color: white;
+            padding: 40px 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .solution-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .solution-icon {
+            background-color: var(--primary);
+            color: white;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            font-size: 1.5rem;
+        }
+        
+        /* Benefits Section */
+        .benefits {
+            background-color: white;
+        }
+        
+        .benefits-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .benefit-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .benefit-icon {
+            background-color: var(--secondary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        /* Use Cases Section */
+        .use-cases {
+            background-color: var(--light);
+        }
+        
+        .use-cases-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .use-case-item {
+            background-color: white;
+            padding: 40px 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        }
+        
+        .use-case-title {
+            color: var(--primary);
+            font-size: 1.25rem;
+            margin-bottom: 15px;
+        }
+        
+        .use-case-result {
+            color: var(--success);
+            font-weight: 500;
+            margin-top: 15px;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            background-color: white;
+        }
+        
+        .testimonials-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .testimonial-item {
+            background-color: var(--light);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #ccc;
+            margin-right: 15px;
+        }
+        
+        .testimonial-info {
+            line-height: 1.4;
+        }
+        
+        .testimonial-name {
+            font-weight: 500;
+        }
+        
+        .testimonial-position {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(120deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+        
+        .cta h2, .cta p {
+            color: white;
+        }
+        
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .cta-buttons {
+            margin-top: 40px;
+        }
+        
+        .btn-cta {
+            background-color: white;
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .btn-cta:hover {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+        
+        .footer-logo {
+            color: white;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-logo svg {
+            margin-right: 10px;
+        }
+        
+        .footer-about {
+            max-width: 300px;
+        }
+        
+        .footer-title {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-link {
+            margin-bottom: 10px;
+        }
+        
+        .footer-link a {
+            color: #cbd5e1;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-link a:hover {
+            color: white;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icon {
+            color: white;
+            font-size: 22px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 992px) {
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                flex-direction: column;
+                background-color: white;
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+                padding: 20px 0;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-link {
+                margin: 15px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero-content {
+                flex-direction: column;
+            }
+            
+            .hero-text, .hero-image {
+                flex: none;
+                max-width: 100%;
+            }
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 700px;
+            min-height: 750px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .modal-close {
+            color: var(--gray);
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .modal-close:hover {
+            color: var(--dark);
+        }
+        
+        .meetings-iframe-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .meetings-iframe-container iframe {
+            height: calc(100% + 50px) !important;
+            margin-bottom: -50px;
+        }
+        
+        @media (max-width: 767px) {
+            .modal-content {
+                width: 95%;
+                margin: 2% auto;
+                padding: 15px;
+                max-height: 96vh;
+                min-height: 700px;
+                overflow-y: auto;
+                left: 0;
+                right: 0;
+            }
+            
+            .meetings-iframe-container {
+                width: 100% !important;
+                height: 85vh !important;
+                overflow: hidden;
+                margin: 0 auto;
+                display: flex;
+                justify-content: center;
+                padding: 0;
+            }
+            
+            .meetings-iframe-container iframe {
+                width: 100% !important;
+                height: 100% !important;
+                transform: scale(0.95);
+                transform-origin: top center;
+                margin: 0 auto;
+                max-width: 100%;
+                left: 0;
+                right: 0;
+                position: relative;
+            }
+            
+            .modal h2 {
+                font-size: 24px;
+                margin-bottom: 15px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <svg class="logo-icon" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12s4.48 10 10 10 10-4.48 10-10z"></path>
+                    <path d="M12 8v8"></path>
+                    <path d="M8 12h8"></path>
+                </svg>
+                Flow Forge Lab
+            </a>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#" class="nav-link">Home</a></li>
+                    <li><a href="#" class="nav-link">Solutions</a></li>
+                    <li><a href="./use-cases.html" class="nav-link">Use Cases</a></li>
+                    <li><a href="./contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <button class="mobile-menu-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero section">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>Automate Your Business, Not Your Customer Relationships</h1>
+                <p class="hero-subheadline">Flow Forge Lab helps small businesses create AI-powered workflows that save time, capture leads, and deliver personalized customer experiences.</p>
+                <a href="#" class="btn btn-primary btn-large">Book a Free Demo</a>
+            </div>
+            <div class="hero-image">
+                <img src="images/before_after_600x400.png" alt="Small business owner reclaiming time with AI automation" class="hero-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Problems Section -->
+    <section class="problems section">
+        <div class="container problems-container">
+            <h2 class="text-center">Small Business, Big Challenges</h2>
+            <p class="text-center">Running a small business means wearing multiple hats. We understand your challenges.</p>
+            
+            <div class="problems-list">
+                <div class="problem-item">
+                    <div class="problem-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="12"></line>
+                            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                        </svg>
+                    </div>
+                    <h3>Missed Opportunities</h3>
+                    <p>Your leads need follow-up within minutes, but your team is already stretched thin. Without immediate engagement, 78% of customers buy from the first business that responds.</p>
+                </div>
+                
+                <div class="problem-item">
+                    <div class="problem-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Time-Consuming Tasks</h3>
+                    <p>Repetitive processes like appointment scheduling, lead qualification, and follow-ups drain your productive hours. Small teams spend up to 40% of their day on tasks that could be automated.</p>
+                </div>
+                
+                <div class="problem-item">
+                    <div class="problem-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                            <line x1="6" y1="1" x2="6" y2="4"></line>
+                            <line x1="10" y1="1" x2="10" y2="4"></line>
+                            <line x1="14" y1="1" x2="14" y2="4"></line>
+                        </svg>
+                    </div>
+                    <h3>Team Burnout</h3>
+                    <p>Your dedicated team is overwhelmed by managing customer inquiries, following up with leads, and handling routine administrative work—leaving little energy for growth-focused activities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section class="solutions section">
+        <div class="container">
+            <div class="solutions-intro text-center">
+                <h2>AI Solutions Tailored for Small Businesses</h2>
+                <p>Flow Forge Lab provides powerful, easy-to-implement AI tools that work for you 24/7, without requiring technical expertise or hiring additional staff.</p>
+            </div>
+            
+            <div class="solutions-list">
+                <div class="solution-item">
+                    <div class="solution-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                    <h3>Personal AI Assistants</h3>
+                    <p>AI assistants that handle scheduling, email management, and customer outreach—giving you back hours of productive time every day.</p>
+                </div>
+                
+                <div class="solution-item">
+                    <div class="solution-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                    </div>
+                    <h3>Intelligent Chatbots</h3>
+                    <p>Engage website visitors 24/7 with conversational AI that answers questions, qualifies leads, and books appointments—even when you're sleeping.</p>
+                </div>
+                
+                <div class="solution-item">
+                    <div class="solution-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline>
+                            <path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"></path>
+                        </svg>
+                    </div>
+                    <h3>Lead Resurrection</h3>
+                    <p>Automatically follow up with dormant leads through personalized, multi-channel outreach that turns cold prospects into hot opportunities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits section">
+        <div class="container">
+            <h2 class="text-center">Why Automate with Flow Forge Lab</h2>
+            <p class="text-center">Our AI solutions deliver meaningful results for small businesses without the enterprise price tag.</p>
+            
+            <div class="benefits-list">
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                    </div>
+                    <h3>24/7 Customer Support</h3>
+                    <p>Respond to customers instantly, anytime—even outside business hours.</p>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                            <line x1="8" y1="21" x2="16" y2="21"></line>
+                            <line x1="12" y1="17" x2="12" y2="21"></line>
+                        </svg>
+                    </div>
+                    <h3>No Technical Skills Needed</h3>
+                    <p>Our no-code platform means anyone can set up sophisticated AI workflows in minutes.</p>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    <h3>Personalized at Scale</h3>
+                    <p>Deliver customized interactions that make each customer feel valued, even with thousands of contacts.</p>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="1" x2="12" y2="23"></line>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                        </svg>
+                    </div>
+                    <h3>Affordable Monthly Plans</h3>
+                    <p>Get enterprise-level automation at small business prices with flexible subscription options.</p>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                            <line x1="12" y1="9" x2="12" y2="13"></line>
+                            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                        </svg>
+                    </div>
+                    <h3>Reduced Human Error</h3>
+                    <p>Eliminate missed follow-ups and inconsistent customer experiences with reliable automation.</p>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+                            <polyline points="16 7 22 7 22 13"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Measurable Results</h3>
+                    <p>Track performance with clear analytics that show exactly how your AI tools are improving your business.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-about">
+                <a href="index.html" class="footer-logo" style="display: flex; align-items: center;">
+                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 10px;">
+                        <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12s4.48 10 10 10 10-4.48 10-10z"></path>
+                        <path d="M12 8v8"></path>
+                        <path d="M8 12h8"></path>
+                    </svg>
+                    Flow Forge Lab
+                </a>
+                <p>AI automation solutions that help small businesses save time, capture leads, and deliver personalized customer experiences.</p>
+                <div class="social-icons" style="display: flex; margin-top: 15px;">
+                    <a href="https://www.linkedin.com/company/flow-forge-lab/" target="_blank" aria-label="LinkedIn" style="transition: all 0.3s ease;">
+                        <img src="./images/LI-In-Bug.png" alt="LinkedIn" width="35" height="30" style="transition: all 0.3s ease;">
+                    </a>
+                </div>
+            </div>
+            
+            <div>
+                <h3 class="footer-title">Quick Links</h3>
+                <ul class="footer-links">
+                    <li class="footer-link"><a href="index.html">Home</a></li>
+                    <li class="footer-link"><a href="#">Solutions</a></li>
+                    <li class="footer-link"><a href="use-cases.html">Use Cases</a></li>
+                    <li class="footer-link"><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3 class="footer-title">Solutions</h3>
+                <ul class="footer-links">
+                    <li class="footer-link"><a href="#">AI Assistants</a></li>
+                    <li class="footer-link"><a href="#">Intelligent Chatbots</a></li>
+                    <li class="footer-link"><a href="#">Lead Resurrection</a></li>
+                    <li class="footer-link"><a href="#">Workflow Automation</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom container">
+            <p>&copy; 2025 Flow Forge Lab. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Modal Container -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Book Your Free Demo</h2>
+            <!-- HubSpot Meetings Embed Code -->
+            <div class="meetings-iframe-container" data-src="https://meetings-na2.hubspot.com/glester?embed=true"></div>
+            <script type="text/javascript" src="https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js"></script>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+            });
+        });
+        
+        // Get the modal
+        const modal = document.getElementById("bookingModal");
+        
+        // Get the button that opens the modal
+        const bookDemoBtn = document.querySelector(".btn-primary.btn-large");
+        
+        // Get the <span> element that closes the modal
+        const closeBtn = document.getElementsByClassName("modal-close")[0];
+        
+        // When the user clicks the button, open the modal 
+        bookDemoBtn.onclick = function(e) {
+            e.preventDefault();
+            modal.style.display = "block";
+            document.body.style.overflow = "hidden"; // Prevent background scrolling
+        }
+        
+        // When the user clicks on <span> (x), close the modal
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+            document.body.style.overflow = "auto"; // Re-enable scrolling
+        }
+        
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+                document.body.style.overflow = "auto"; // Re-enable scrolling
+            }
+        }
+        
+        // Function to remove HubSpot branding after the widget loads
+        function hideHubSpotBranding() {
+            try {
+                const iframes = document.querySelectorAll('.meetings-iframe-container iframe');
+                
+                if (iframes.length > 0) {
+                    iframes.forEach(iframe => {
+                        // Try to access iframe content (may be blocked by same-origin policy)
+                        try {
+                            const hubspotLinks = iframe.contentDocument.querySelectorAll('a[href*="hubspot"]');
+                            hubspotLinks.forEach(link => {
+                                if (link.textContent.includes('Create your free meeting')) {
+                                    const parentElement = link.parentElement;
+                                    if (parentElement) {
+                                        parentElement.style.display = 'none';
+                                    }
+                                }
+                            });
+                        } catch (e) {
+                            console.log('Cannot access iframe content due to same-origin policy');
+                        }
+                    });
+                }
+            } catch (e) {
+                console.log('Error in hideHubSpotBranding:', e);
+            }
+        }
+        
+        // Run the function after a delay to ensure the iframe has loaded
+        setTimeout(hideHubSpotBranding, 2000);
+        
+        // Also try to run when the HubSpot script has loaded
+        document.querySelector('script[src*="MeetingsEmbedCode.js"]').onload = function() {
+            setTimeout(hideHubSpotBranding, 1000);
+        };
+        
+        // Initialize Feather icons
+        document.addEventListener('DOMContentLoaded', function() {
+            feather.replace();
+        });
+    </script>
+</body>
+</html>
