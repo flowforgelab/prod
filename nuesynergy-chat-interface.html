@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NueSynergy Support Chat</title>
+    <!-- Add Markdown parser -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -37,7 +39,7 @@
         
         .message {
             margin-bottom: 15px;
-            max-width: 70%;
+            max-width: 75%;
             padding: 10px 15px;
             border-radius: 20px;
             line-height: 1.4;
@@ -55,6 +57,33 @@
             background-color: #e5e5ea;
             color: black;
             border-bottom-left-radius: 5px;
+        }
+        
+        /* Improve Markdown styling */
+        .bot-message ul, .bot-message ol {
+            padding-left: 20px;
+            margin: 8px 0;
+        }
+        
+        .bot-message ul ul, .bot-message ol ol,
+        .bot-message ul ol, .bot-message ol ul {
+            margin: 0;
+        }
+        
+        .bot-message li {
+            margin-bottom: 5px;
+        }
+        
+        .bot-message p {
+            margin: 0 0 10px 0;
+        }
+        
+        .bot-message strong, .bot-message b {
+            font-weight: bold;
+        }
+        
+        .bot-message em, .bot-message i {
+            font-style: italic;
         }
         
         .sources {
@@ -133,7 +162,13 @@
             const sessionId = 'session_' + Date.now();
             
             // Replace with your actual n8n webhook URL - update this!
-            const queryEndpoint = 'https://n8n.flowforgelab.com/webhook/nuesynergy';
+            const queryEndpoint = 'https://your-n8n-instance.com/webhook/nuesynergy';
+            
+            // Configure marked.js options
+            marked.setOptions({
+                breaks: true,  // Interpret line breaks as <br>
+                gfm: true      // Use GitHub Flavored Markdown
+            });
             
             async function sendMessage() {
                 const message = messageInput.value.trim();
@@ -210,7 +245,14 @@
             function addMessage(message, sender, sources = []) {
                 const messageElement = document.createElement('div');
                 messageElement.className = `message ${sender}-message`;
-                messageElement.textContent = message;
+                
+                // For bot messages, parse markdown. For user messages, just use text
+                if (sender === 'bot') {
+                    // Parse markdown to HTML using marked.js
+                    messageElement.innerHTML = marked.parse(message);
+                } else {
+                    messageElement.textContent = message;
+                }
                 
                 if (sources && sources.length > 0) {
                     const sourcesElement = document.createElement('div');
