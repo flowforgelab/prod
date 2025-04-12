@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Bubble Popup</title>
+    <link rel="stylesheet" href="styles/chat-bubble.css">
+</head>
+<body>
+    <div id="chat-bubble" class="chat-bubble">
+        <div class="chat-header">
+            <h3>Chat Support</h3>
+            <button id="close-bubble" class="close-button">×</button>
+        </div>
+        <div class="chat-messages" id="chat-messages">
+            <div class="message bot-message">Hello! How can I assist you today?</div>
+        </div>
+        <div class="input-area">
+            <input type="text" id="message-input" placeholder="Type your message..." autocomplete="off">
+            <button id="send-button">Send</button>
+        </div>
+    </div>
+    <button id="open-bubble" class="open-button">Chat</button>
+
+    <script src="scripts/chat-bubble.js"></script>
+</body>
+</html>
