@@ -181,3 +181,9 @@
   height: 28px;
   fill: white;
 }
+
+/* FORCE ALL BOT MESSAGE CONTENT TO BE BLACK */
+.bot-message,
+.bot-message * {
+  color: black !important;
+}
