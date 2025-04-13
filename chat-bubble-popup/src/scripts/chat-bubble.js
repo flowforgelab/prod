@@ -1,5 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const chatBubble = document.createElement('div');
+    // Override heading rendering
+    marked.use({
+      renderer: {
+        heading(text, level) {
+          return `<p><strong>${text}</strong></p>`;
+        }
+      }
+    });  
+  
+  const chatBubble = document.createElement('div');
     chatBubble.className = 'chat-bubble';
     chatBubble.style.display = 'none';
     chatBubble.innerHTML = `

@@ -78,6 +78,8 @@
     color: #333;
     border-bottom-left-radius: 5px;
     margin-left: 4px;
+    font-size: 14px;
+    line-height: 1.5;
   }
   .bot-message ul {
     list-style-position: inside;
@@ -92,6 +94,7 @@
   .bot-message p {
     margin-bottom: 1em;
     line-height: 1.5;
+    margin: 0.5em 0;
   }
   
   .bot-message strong {
