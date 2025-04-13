@@ -96,6 +96,11 @@
   color: inherit;
 }
 
+.bot-message,
+.bot-message * {
+  color: var(--primary) !important;
+}
+
 .bot-message ul {
   list-style-type: disc;
   list-style-position: inside;
