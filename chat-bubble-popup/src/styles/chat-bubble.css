@@ -80,6 +80,12 @@
     margin-left: 4px;
   }
   
+  .bot-message ul {
+    list-style-position: inside;
+    padding-left: 0;
+    margin-left: 0;
+  }
+  
   .thinking {
     font-style: italic;
     color: #888;
