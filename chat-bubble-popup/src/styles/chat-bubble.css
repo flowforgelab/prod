@@ -81,6 +81,17 @@
     font-size: 14px;
     line-height: 1.5;
   }
+  .bot-message h1,
+.bot-message h2,
+.bot-message h3,
+.bot-message h4,
+.bot-message h5,
+.bot-message h6 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 1em 0 0.5em;
+  line-height: 1.4;
+}
   .bot-message ul {
     list-style-position: inside;
     padding-left: 0;
