@@ -537,12 +537,6 @@
             // Get or create session ID
             const sessionId = getSessionId();
             
-            // Get user data if available
-            const userData = JSON.parse(localStorage.getItem('demoUserData') || '{}');
-            
-            // Format the session ID without the random part - match the successful format
-            const simplifiedSessionId = sessionId.split('_').slice(0, 2).join('_');
-            
             // Get current timestamp in ISO format
             const timestamp = new Date().toISOString();
             
@@ -554,7 +548,7 @@
                     },
                     body: JSON.stringify({ 
                         chatInput: message,  // Changed from "message" to "chatInput"
-                        sessionId: simplifiedSessionId,  // Simplified session ID format
+                        sessionId: sessionId,  // Simplified session ID format
                         timestamp: timestamp  // Added timestamp
                     })
                 });
@@ -566,8 +560,21 @@
                 const data = await response.json();
                 hideTypingIndicator();
                 
-                // Add the response from n8n to the chat
-                addMessage(data.response || "Sorry, I didn't get a proper response.");
+                // Parse the response based on the n8n output format
+                // The format appears to be [{ "output": "message text" }]
+                let responseMessage = "Sorry, I didn't get a proper response.";
+                
+                if (Array.isArray(data) && data.length > 0 && data[0].output) {
+                    responseMessage = data[0].output;
+                } else if (data.response) {
+                    // Fallback to the original expected format
+                    responseMessage = data.response;
+                } else {
+                    console.log("Unexpected response format:", data);
+                }
+                
+                // Add the response to the chat
+                addMessage(responseMessage);
                 
             } catch (error) {
                 console.error('Error:', error);
