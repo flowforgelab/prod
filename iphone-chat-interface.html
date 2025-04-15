@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Samena Chat</title>
+    <title>XYZ Corp Chat</title>
     <style>
         :root {
             --iphone-blue: #007AFF;
@@ -340,10 +340,10 @@
                 </svg>
             </a>
             <div class="contact-info">
-                <div class="avatar">S</div>
+                <div class="avatar">XYZ</div>
                 <div class="contact-details">
-                    <div class="contact-name">Samena <span style="color: #8E8E93; display: inline-block;">›</span></div>
-                    <div class="contact-location">Bellevue, WA</div>
+                    <div class="contact-name">XYZ Corp <span style="color: #8E8E93; display: inline-block;">›</span></div>
+                    <div class="contact-location">Anywhere, US</div>
                 </div>
             </div>
             <a href="#" style="position: absolute; right: 15px; color: var(--iphone-blue);">
@@ -390,7 +390,7 @@
         <div class="contact-modal-content">
             <div class="contact-modal-header">
                 <h2>Provide your contact details for the demo</h2>
-                <p>Please fill in your information to continue with the Samena demo</p>
+                <p>Please fill in your information to continue with the XYZ Corp demo</p>
             </div>
             <form id="contactForm">
                 <div class="contact-form-group">
@@ -467,6 +467,7 @@
         // Update times on page load
         updateTimestamp();
         updateStatusTime();
+        setInterval(updateStatusTime, 60000); // Update time every minute
         
         // Function to validate send button state
         function validateSendButton() {
@@ -553,62 +554,71 @@
             console.log("Webhook URL:", WEBHOOK_URL);
             
             try {
-                // Using XMLHttpRequest instead of fetch as a fallback
-                const xhr = new XMLHttpRequest();
-                xhr.open('POST', WEBHOOK_URL, true);
-                xhr.setRequestHeader('Content-Type', 'application/json');
+                // Send request to webhook using fetch API
+                const response = await fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
                 
-                xhr.onload = function() {
-                    if (xhr.status >= 200 && xhr.status < 300) {
-                        console.log("Response from webhook:", xhr.responseText);
+                // Check if the response is ok (status code 200-299)
+                if (response.ok) {
+                    // Try to parse the response as JSON
+                    try {
+                        const responseData = await response.text();
+                        console.log("Raw response from webhook:", responseData);
+                        
+                        // Handle both text and JSON responses
+                        let responseMessage;
                         
                         try {
-                            const data = JSON.parse(xhr.responseText);
-                            hideTypingIndicator();
+                            // First try to parse as JSON
+                            const jsonData = JSON.parse(responseData);
+                            console.log("Parsed JSON:", jsonData);
                             
-                            // Parse the response based on the n8n output format
-                            let responseMessage = "Sorry, I didn't get a proper response.";
-                            
-                            if (Array.isArray(data) && data.length > 0 && data[0].output) {
-                                responseMessage = data[0].output;
-                            } else if (data.response) {
-                                // Fallback to the original expected format
-                                responseMessage = data.response;
+                            // Handle different response formats
+                            if (Array.isArray(jsonData) && jsonData.length > 0 && jsonData[0].output) {
+                                responseMessage = jsonData[0].output;
+                            } else if (jsonData.output) {
+                                responseMessage = jsonData.output;
+                            } else if (jsonData.response) {
+                                responseMessage = jsonData.response;
+                            } else if (typeof jsonData === 'string') {
+                                responseMessage = jsonData;
                             } else {
-                                console.log("Unexpected response format:", data);
+                                // If we can't determine the format, use the raw text
+                                responseMessage = responseData;
                             }
-                            
-                            // Add the response to the chat
-                            addMessage(responseMessage);
                         } catch (e) {
-                            console.error("Error parsing response:", e);
-                            hideTypingIndicator();
-                            addMessage("Sorry, I received a response but couldn't parse it properly.");
+                            // If parsing as JSON fails, treat the response as plain text
+                            console.log("Response is not JSON, using as plain text");
+                            responseMessage = responseData;
                         }
-                    } else {
-                        console.error("XMLHttpRequest error:", xhr.status, xhr.statusText);
+                        
+                        // Hide typing indicator and add the response to the chat
                         hideTypingIndicator();
-                        addMessage("Sorry, there was an error processing your request. Please try again. Error: " + xhr.status + " " + xhr.statusText);
+                        addMessage(responseMessage);
+                    } catch (e) {
+                        console.error("Error processing response:", e);
+                        hideTypingIndicator();
+                        
+                        // Fallback response for demo purposes
+                        const fallbackResponse = "Thanks for your interest! Is there anything specific you'd like to know about our club?";
+                        addMessage(fallbackResponse);
                     }
-                };
-                
-                xhr.onerror = function() {
-                    console.error("XMLHttpRequest network error");
+                } else {
+                    console.error("HTTP error:", response.status, response.statusText);
                     hideTypingIndicator();
-                    addMessage("Sorry, there was a network error. This might be due to CORS restrictions. Please check browser console for details.");
                     
-                    // Provide a simulated response for demonstration purposes
-                    setTimeout(() => {
-                        addMessage("Awesome! Is there anything specific you'd like your tour to cover when you come in?");
-                    }, 1500);
-                };
-                
-                xhr.send(JSON.stringify(payload));
-                
+                    // Fallback response for demo purposes
+                    const fallbackResponse = "Great! I'd be happy to book a tour for you. What day works best for you to come in?";
+                    addMessage(fallbackResponse);
+                }
             } catch (error) {
                 console.error("Error sending message to webhook:", error);
                 hideTypingIndicator();
-                addMessage("Sorry, there was an error processing your request. Please try again. Error: " + error.message);
                 
                 // Provide a simulated response for demonstration purposes
                 setTimeout(() => {
