@@ -395,15 +395,15 @@
             <form id="contactForm">
                 <div class="contact-form-group">
                     <label for="name">Full Name</label>
-                    <input type="text" id="name" name="name" required>
+                    <input type="text" id="name" name="name" value="Demo User" required>
                 </div>
                 <div class="contact-form-group">
                     <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email" name="email" value="demo@example.com" required>
                 </div>
                 <div class="contact-form-group">
                     <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" required>
+                    <input type="tel" id="phone" name="phone" value="555-123-4567" required>
                 </div>
                 <button type="submit" class="contact-form-submit">Continue to Demo</button>
             </form>
@@ -413,6 +413,7 @@
     <script>
         // Configuration (replace with your actual webhook URL)
         const WEBHOOK_URL = "https://n8n.flowforgelab.com/webhook-test/8f0a00a2-2465-4446-84fc-bc6a1c3dcdba";
+        console.log("Webhook URL initialized:", WEBHOOK_URL);
         
         // DOM Elements
         const messageInput = document.getElementById('message-input');
@@ -540,28 +541,52 @@
             // Get current timestamp in ISO format
             const timestamp = new Date().toISOString();
             
+            // Create the payload
+            const payload = {
+                chatInput: message,
+                sessionId: sessionId,
+                timestamp: timestamp
+            };
+            
+            // Log what we're sending for debugging
+            console.log("Sending to webhook:", payload);
+            console.log("Webhook URL:", WEBHOOK_URL);
+            
             try {
+                // First, try a test request to webhook.site to verify browser can make fetch requests
+                const testResponse = await fetch("https://webhook.site/token/d0a6fb6a-15a5-492b-a433-25174915eed1/request", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        test: "Testing if fetch is working",
+                        actualPayload: payload,
+                        targetUrl: WEBHOOK_URL
+                    })
+                });
+                
+                console.log("Test webhook response:", testResponse.status, testResponse.statusText);
+                
+                // Now send the actual request to n8n
                 const response = await fetch(WEBHOOK_URL, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ 
-                        chatInput: message,  // Changed from "message" to "chatInput"
-                        sessionId: sessionId,  // Simplified session ID format
-                        timestamp: timestamp  // Added timestamp
-                    })
+                    body: JSON.stringify(payload)
                 });
                 
                 if (!response.ok) {
-                    throw new Error('Network response was not ok');
+                    throw new Error(`Network response was not ok: ${response.status} ${response.statusText}`);
                 }
                 
                 const data = await response.json();
+                console.log("Response from webhook:", data);
+                
                 hideTypingIndicator();
                 
                 // Parse the response based on the n8n output format
-                // The format appears to be [{ "output": "message text" }]
                 let responseMessage = "Sorry, I didn't get a proper response.";
                 
                 if (Array.isArray(data) && data.length > 0 && data[0].output) {
@@ -577,9 +602,9 @@
                 addMessage(responseMessage);
                 
             } catch (error) {
-                console.error('Error:', error);
+                console.error("Error sending message to webhook:", error);
                 hideTypingIndicator();
-                addMessage("Sorry, there was an error processing your request. Please try again.");
+                addMessage("Sorry, there was an error processing your request. Please try again. Error: " + error.message);
             }
         }
         
@@ -589,6 +614,7 @@
         messageInput.addEventListener('keypress', function(e) {
             if (e.key === 'Enter' && validateSendButton()) {
                 const message = messageInput.value.trim();
+                console.log("Send button pressed with message:", message);
                 addMessage(message, true);
                 sendMessageToWebhook(message);
                 messageInput.value = '';
@@ -599,6 +625,7 @@
         sendButton.addEventListener('click', function() {
             if (validateSendButton()) {
                 const message = messageInput.value.trim();
+                console.log("Send button clicked with message:", message);
                 addMessage(message, true);
                 sendMessageToWebhook(message);
                 messageInput.value = '';
