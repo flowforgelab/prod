@@ -215,7 +215,7 @@
 
         /* Contact Modal Styles */
         .contact-modal {
-            display: flex;
+            display: none; /* Initially hidden, will be shown via JS */
             position: fixed;
             top: 0;
             left: 0;
@@ -459,15 +459,19 @@
         
         // Check if user data exists on page load
         document.addEventListener('DOMContentLoaded', function() {
-            const storedUserData = localStorage.getItem('demoUserData');
-            
-            // If no user data, show the contact modal
-            if (!storedUserData) {
-                contactModal.style.display = 'flex';
-            } else {
-                contactModal.style.display = 'none';
-                console.log('User data already exists:', JSON.parse(storedUserData));
-            }
+            // IMPORTANT: Force modal to display correctly
+            setTimeout(function() {
+                const storedUserData = localStorage.getItem('demoUserData');
+                
+                // If no user data, show the contact modal
+                if (!storedUserData) {
+                    console.log('No user data found, showing contact modal');
+                    contactModal.style.display = 'flex';
+                } else {
+                    console.log('User data already exists:', JSON.parse(storedUserData));
+                    contactModal.style.display = 'none';
+                }
+            }, 500); // Short delay to ensure DOM is fully loaded
         });
         
         // Add a clear data button for testing (optional)
@@ -520,6 +524,35 @@
             }
         }
         
+        // This function improves how calendar confirmation messages are displayed
+        function processSchedulingConfirmation(message) {
+            if (message.includes('calendar/event?eid=') && message.includes('booked for a tour')) {
+                // Extract the confirmation details from the message
+                const dateTimeMatch = message.match(/on ([^,]+, \d{2}\/\d{2}) at (\d{1,2}:\d{2} [AP]M)/);
+                const linkMatch = message.match(/\[confirmation link\]\((https:\/\/www\.google\.com\/calendar\/event\?eid=[^)]+)\)/);
+                
+                if (dateTimeMatch && linkMatch) {
+                    const date = dateTimeMatch[1];
+                    const time = dateTimeMatch[2];
+                    const link = linkMatch[1];
+                    
+                    // Create a more user-friendly confirmation message
+                    const enhancedMessage = `
+                        Great! I've got you booked for a tour on ${date} at ${time}.
+                        
+                        A calendar invitation has been sent to your email. You can also <a href="${link}" target="_blank" style="color: var(--iphone-blue); text-decoration: underline;">add this event to your calendar</a> directly.
+                        
+                        Looking forward to seeing you at Samena Swim Club! If you have any questions or need to reschedule, just let me know.
+                    `;
+                    
+                    return enhancedMessage;
+                }
+            }
+            
+            // If it's not a scheduling confirmation or we couldn't parse it, return the original message
+            return message;
+        }
+
         // Update the addMessage function to use our new processor
         function addMessage(message, isUser = false) {
             const messageDiv = document.createElement('div');
@@ -559,33 +592,7 @@
         function scrollToBottom() {
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
         }
-        // This function improves how calendar confirmation messages are displayed
-        function processSchedulingConfirmation(message) {
-            if (message.includes('calendar/event?eid=') && message.includes('booked for a tour')) {
-                // Extract the confirmation details from the message
-                const dateTimeMatch = message.match(/on ([^,]+, \d{2}\/\d{2}) at (\d{1,2}:\d{2} [AP]M)/);
-                const linkMatch = message.match(/\[confirmation link\]\((https:\/\/www\.google\.com\/calendar\/event\?eid=[^)]+)\)/);
         
-                if (dateTimeMatch && linkMatch) {
-                    const date = dateTimeMatch[1];
-                    const time = dateTimeMatch[2];
-                    const link = linkMatch[1];
-            
-                    // Create a more user-friendly confirmation message
-                    const enhancedMessage = `
-                        Great! I've got you booked for a tour on ${date} at ${time}.
-                        
-                        A calendar invitation has been sent to your email. You can also <a href="${link}" target="_blank" style="color: var(--iphone-blue); text-decoration: underline;">add this event to your calendar</a> directly.
-                        
-                        Looking forward to seeing you at Samena Swim Club! If you have any questions or need to reschedule, just let me know.
-                    `;
-            
-                    return enhancedMessage;
-                }
-            }
-        return message; // Return the original message if no enhancements were made
-        }
-
         // Function to show typing indicator
         function showTypingIndicator() {
             typingIndicator.style.display = 'block';
@@ -758,6 +765,16 @@
         
         // Initial validation
         validateSendButton();
+        
+        // Force check for modal display on load (added as backup)
+        window.onload = function() {
+            setTimeout(function() {
+                const storedUserData = localStorage.getItem('demoUserData');
+                if (!storedUserData && contactModal) {
+                    contactModal.style.display = 'flex';
+                }
+            }, 1000);
+        };
     </script>
 </body>
 </html>
