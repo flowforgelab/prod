@@ -515,10 +515,30 @@
             typingIndicator.style.display = 'none';
         }
         
+        // Function to generate a session ID if not already present
+        function getSessionId() {
+            // Check if session ID exists in localStorage
+            let sessionId = localStorage.getItem('chatSessionId');
+            
+            // If not, create a new one
+            if (!sessionId) {
+                sessionId = 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+                localStorage.setItem('chatSessionId', sessionId);
+            }
+            
+            return sessionId;
+        }
+        
         // Function to send message to webhook
         async function sendMessageToWebhook(message) {
             // Show typing indicator while waiting for response
             showTypingIndicator();
+            
+            // Get or create session ID
+            const sessionId = getSessionId();
+            
+            // Get user data if available
+            const userData = JSON.parse(localStorage.getItem('demoUserData') || '{}');
             
             try {
                 const response = await fetch(WEBHOOK_URL, {
@@ -526,7 +546,11 @@
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ message })
+                    body: JSON.stringify({ 
+                        message,
+                        sessionId,
+                        user: userData
+                    })
                 });
                 
                 if (!response.ok) {
