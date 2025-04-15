@@ -545,12 +545,19 @@
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'X-Session-ID': sessionId  // Include sessionId in headers
+                        'X-Session-ID': sessionId,
+                        'sessionId': sessionId  // Try an additional format in headers
                     },
                     body: JSON.stringify({ 
                         message,
-                        sessionId,  // Keep in body as well for backward compatibility
-                        user: userData
+                        sessionId,
+                        sessionID: sessionId,  // Try alternate casing
+                        session_id: sessionId, // Try snake_case format
+                        conversationId: sessionId, // Try conversation ID format
+                        user: userData,
+                        input: {  // Add common LangChain format for inputs
+                            sessionId: sessionId
+                        }
                     })
                 });
                 
