@@ -429,18 +429,58 @@
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Store user information if needed
+            // Store user information
             const userData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value
+                name: document.getElementById('name').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                phone: document.getElementById('phone').value.trim()
             };
             
-            // Store in localStorage for potential future use
+            // Validate email format
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(userData.email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            
+            // Validate phone number (basic check)
+            if (userData.phone.length < 7) {
+                alert('Please enter a valid phone number.');
+                return;
+            }
+            
+            // Store in localStorage for future use
             localStorage.setItem('demoUserData', JSON.stringify(userData));
+            console.log('User data saved:', userData);
             
             // Close the modal
             contactModal.style.display = 'none';
+        });
+        
+        // Check if user data exists on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const storedUserData = localStorage.getItem('demoUserData');
+            
+            // If no user data, show the contact modal
+            if (!storedUserData) {
+                contactModal.style.display = 'flex';
+            } else {
+                contactModal.style.display = 'none';
+                console.log('User data already exists:', JSON.parse(storedUserData));
+            }
+        });
+        
+        // Add a clear data button for testing (optional)
+        const footerDiv = document.createElement('div');
+        footerDiv.style.cssText = 'position: fixed; bottom: 10px; right: 10px; font-size: 12px; color: #8E8E93;';
+        footerDiv.innerHTML = '<a href="#" id="clearData" style="color: #8E8E93; text-decoration: underline;">Reset Demo</a>';
+        document.body.appendChild(footerDiv);
+
+        document.getElementById('clearData').addEventListener('click', function(e) {
+            e.preventDefault();
+            localStorage.removeItem('demoUserData');
+            localStorage.removeItem('chatSessionId');
+            location.reload();
         });
         
         // Function to update the status bar time
@@ -480,12 +520,27 @@
             }
         }
         
-        // Function to add a message to the chat
+        // Update the addMessage function to use our new processor
         function addMessage(message, isUser = false) {
             const messageDiv = document.createElement('div');
             messageDiv.classList.add('message');
             messageDiv.classList.add(isUser ? 'user-message' : 'response-message');
-            messageDiv.textContent = message;
+            
+            // Process the message
+            let processedMessage = message;
+            
+            if (!isUser) {
+                // Only attempt to process scheduling confirmations for bot messages
+                processedMessage = processSchedulingConfirmation(message);
+            }
+            
+            // Process markdown-style links: [text](url)
+            processedMessage = processedMessage.replace(/\[([^\]]+)\]\(([^)]+)\)/g, function(match, text, url) {
+                return `<a href="${url}" target="_blank" style="color: ${isUser ? 'white' : 'var(--iphone-blue)'}; text-decoration: underline;">${text}</a>`;
+            });
+            
+            // Set the innerHTML (since we now have HTML content)
+            messageDiv.innerHTML = processedMessage;
             
             messagesContainer.appendChild(messageDiv);
             
@@ -504,7 +559,33 @@
         function scrollToBottom() {
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
         }
+        // This function improves how calendar confirmation messages are displayed
+        function processSchedulingConfirmation(message) {
+            if (message.includes('calendar/event?eid=') && message.includes('booked for a tour')) {
+                // Extract the confirmation details from the message
+                const dateTimeMatch = message.match(/on ([^,]+, \d{2}\/\d{2}) at (\d{1,2}:\d{2} [AP]M)/);
+                const linkMatch = message.match(/\[confirmation link\]\((https:\/\/www\.google\.com\/calendar\/event\?eid=[^)]+)\)/);
         
+                if (dateTimeMatch && linkMatch) {
+                    const date = dateTimeMatch[1];
+                    const time = dateTimeMatch[2];
+                    const link = linkMatch[1];
+            
+                    // Create a more user-friendly confirmation message
+                    const enhancedMessage = `
+                        Great! I've got you booked for a tour on ${date} at ${time}.
+                        
+                        A calendar invitation has been sent to your email. You can also <a href="${link}" target="_blank" style="color: var(--iphone-blue); text-decoration: underline;">add this event to your calendar</a> directly.
+                        
+                        Looking forward to seeing you at Samena Swim Club! If you have any questions or need to reschedule, just let me know.
+                    `;
+            
+                    return enhancedMessage;
+                }
+            }
+        return message; // Return the original message if no enhancements were made
+        }
+
         // Function to show typing indicator
         function showTypingIndicator() {
             typingIndicator.style.display = 'block';
@@ -542,12 +623,28 @@
             // Get current timestamp in ISO format
             const timestamp = new Date().toISOString();
             
+            // Get user data from localStorage (if available)
+            let userData = null;
+            try {
+                const storedUserData = localStorage.getItem('demoUserData');
+                if (storedUserData) {
+                    userData = JSON.parse(storedUserData);
+                }
+            } catch (e) {
+                console.error("Error parsing user data:", e);
+            }
+            
             // Create the payload
             const payload = {
                 chatInput: message,
                 sessionId: sessionId,
                 timestamp: timestamp
             };
+            
+            // Add user data to payload if available
+            if (userData) {
+                payload.userData = userData;
+            }
             
             // Log what we're sending for debugging
             console.log("Sending to webhook:", payload);
@@ -591,6 +688,13 @@
                                 // If we can't determine the format, use the raw text
                                 responseMessage = responseData;
                             }
+                            
+                            // If there's a Calendar event link in the response, extract and format it
+                            if (responseMessage.includes('calendar/event?eid=')) {
+                                // The response already contains a properly formatted markdown link
+                                console.log("Calendar event link detected in response");
+                            }
+                            
                         } catch (e) {
                             // If parsing as JSON fails, treat the response as plain text
                             console.log("Response is not JSON, using as plain text");
@@ -604,26 +708,26 @@
                         console.error("Error processing response:", e);
                         hideTypingIndicator();
                         
-                        // Fallback response for demo purposes
-                        const fallbackResponse = "Thanks for your interest! Is there anything specific you'd like to know about our club?";
+                        // Fallback response
+                        const fallbackResponse = "Thanks for your interest! I'll be happy to schedule your tour. Would you please let me know what day works best for you?";
                         addMessage(fallbackResponse);
                     }
                 } else {
                     console.error("HTTP error:", response.status, response.statusText);
                     hideTypingIndicator();
                     
-                    // Fallback response for demo purposes
-                    const fallbackResponse = "Great! I'd be happy to book a tour for you. What day works best for you to come in?";
+                    // Fallback response
+                    const fallbackResponse = "I'd be happy to book a tour for you. What day works best for you to come in?";
                     addMessage(fallbackResponse);
                 }
             } catch (error) {
                 console.error("Error sending message to webhook:", error);
                 hideTypingIndicator();
                 
-                // Provide a simulated response for demonstration purposes
+                // Fallback response
                 setTimeout(() => {
-                    addMessage("Awesome! Is there anything specific you'd like your tour to cover when you come in?");
-                }, 1500);
+                    addMessage("I'd be happy to help schedule your tour. Is there a particular day that works best for you?");
+                }, 1000);
             }
         }
         
