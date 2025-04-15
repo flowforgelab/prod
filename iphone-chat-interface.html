@@ -520,9 +520,9 @@
             // Check if session ID exists in localStorage
             let sessionId = localStorage.getItem('chatSessionId');
             
-            // If not, create a new one
+            // If not, create a new one - using a simplified format that matches the successful example
             if (!sessionId) {
-                sessionId = 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+                sessionId = 'session_' + Date.now();
                 localStorage.setItem('chatSessionId', sessionId);
             }
             
@@ -540,24 +540,22 @@
             // Get user data if available
             const userData = JSON.parse(localStorage.getItem('demoUserData') || '{}');
             
+            // Format the session ID without the random part - match the successful format
+            const simplifiedSessionId = sessionId.split('_').slice(0, 2).join('_');
+            
+            // Get current timestamp in ISO format
+            const timestamp = new Date().toISOString();
+            
             try {
                 const response = await fetch(WEBHOOK_URL, {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json',
-                        'X-Session-ID': sessionId,
-                        'sessionId': sessionId  // Try an additional format in headers
+                        'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({ 
-                        message,
-                        sessionId,
-                        sessionID: sessionId,  // Try alternate casing
-                        session_id: sessionId, // Try snake_case format
-                        conversationId: sessionId, // Try conversation ID format
-                        user: userData,
-                        input: {  // Add common LangChain format for inputs
-                            sessionId: sessionId
-                        }
+                        chatInput: message,  // Changed from "message" to "chatInput"
+                        sessionId: simplifiedSessionId,  // Simplified session ID format
+                        timestamp: timestamp  // Added timestamp
                     })
                 });
                 
