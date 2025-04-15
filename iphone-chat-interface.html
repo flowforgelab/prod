@@ -213,6 +213,81 @@
             44% { transform: translateY(0px); }
         }
 
+        /* Contact Modal Styles */
+        .contact-modal {
+            display: flex;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .contact-modal-content {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-modal-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-modal-header h2 {
+            color: var(--dark);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .contact-modal-header p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .contact-form-group {
+            margin-bottom: 15px;
+        }
+
+        .contact-form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .contact-form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .contact-form-submit {
+            background-color: var(--iphone-blue);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px;
+            width: 100%;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .contact-form-submit:hover {
+            background-color: #0066cc;
+        }
+
         /* Responsive adjustments */
         @media (max-width: 480px) {
             .phone-container {
@@ -268,6 +343,7 @@
                 <div class="avatar">XYZ</div>
                 <div class="contact-details">
                     <div class="contact-name">XYZ Corp <span style="color: #8E8E93; display: inline-block;">›</span></div>
+                    <div class="contact-location">Anywhere, US</div>
                 </div>
             </div>
             <a href="#" style="position: absolute; right: 15px; color: var(--iphone-blue);">
@@ -283,7 +359,7 @@
             <div id="timestamp" style="text-align: center; margin: 20px 0; color: #8E8E93; font-size: 12px;"></div>
             <!-- Messages will be added here dynamically -->
             <div class="message response-message">
-                Hello! How can I help you today?
+                Hi, it's Michael from XYZ Corp. I was alerted that you just filled out the form for a free consultation! To make sure we can best help you, is it cool if I ask a few quick questions?
             </div>
         </div>
         
@@ -309,6 +385,31 @@
         </div>
     </div>
 
+    <!-- Contact Details Modal -->
+    <div id="contactModal" class="contact-modal">
+        <div class="contact-modal-content">
+            <div class="contact-modal-header">
+                <h2>Provide your contact details for the demo</h2>
+                <p>Please fill in your information to continue with the XYZ Corp demo</p>
+            </div>
+            <form id="contactForm">
+                <div class="contact-form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="contact-form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="contact-form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <button type="submit" class="contact-form-submit">Continue to Demo</button>
+            </form>
+        </div>
+    </div>
+
     <script>
         // Configuration (replace with your actual webhook URL)
         const WEBHOOK_URL = "https://n8n.flowforgelab.com/webhook-test/8f0a00a2-2465-4446-84fc-bc6a1c3dcdba";
@@ -320,6 +421,26 @@
         const typingIndicator = document.getElementById('typing-indicator');
         const timestampElement = document.getElementById('timestamp');
         const statusTimeElement = document.getElementById('status-time');
+        const contactModal = document.getElementById('contactModal');
+        const contactForm = document.getElementById('contactForm');
+        
+        // Contact form submission
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Store user information if needed
+            const userData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value
+            };
+            
+            // Store in localStorage for potential future use
+            localStorage.setItem('demoUserData', JSON.stringify(userData));
+            
+            // Close the modal
+            contactModal.style.display = 'none';
+        });
         
         // Function to update the status bar time
         function updateStatusTime() {
