@@ -37,7 +37,7 @@ function initMobileMenu() {
     }
 }
 
-// Initialize modal functionality
+// Initialize modal functionality with iframe booking widget
 function initModal() {
     // Get the modal
     const modal = document.getElementById("bookingModal");
@@ -54,6 +54,56 @@ function initModal() {
             e.preventDefault();
             modal.style.display = "block";
             document.body.style.overflow = "hidden"; // Prevent background scrolling
+            
+            // Get the modal content container
+            const modalContent = document.querySelector('.modal-content');
+            
+            // Check if the booking iframe exists
+            let iframe = document.getElementById('bookingIframe');
+            
+            // If iframe doesn't exist, create it and add it to the modal
+            if (!iframe) {
+                // Clear any existing content except the header and close button
+                const title = modalContent.querySelector('h2');
+                const closeBtn = modalContent.querySelector('.modal-close');
+                
+                // Store these elements to reinsert them
+                const tempElements = {
+                    title: title ? title.cloneNode(true) : null,
+                    closeBtn: closeBtn ? closeBtn.cloneNode(true) : null
+                };
+                
+                // Clear the modal content
+                modalContent.innerHTML = '';
+                
+                // Add back the title and close button
+                if (tempElements.closeBtn) {
+                    modalContent.appendChild(tempElements.closeBtn);
+                }
+                
+                if (tempElements.title) {
+                    modalContent.appendChild(tempElements.title);
+                }
+                
+                // Create the iframe
+                iframe = document.createElement('iframe');
+                iframe.id = 'bookingIframe';
+                iframe.src = 'https://api.leadconnectorhq.com/widget/booking/23wZMq8rZf755oQDesYy';
+                iframe.style.width = '100%';
+                iframe.style.height = '750px';
+                iframe.style.border = 'none';
+                iframe.scrolling = 'no';
+                iframe.setAttribute('id', '23wZMq8rZf755oQDesYy_1745531168392');
+                
+                // Add the iframe to the modal
+                modalContent.appendChild(iframe);
+                
+                // Add the script for the booking widget
+                const script = document.createElement('script');
+                script.src = 'https://link.msgsndr.com/js/form_embed.js';
+                script.type = 'text/javascript';
+                modalContent.appendChild(script);
+            }
         }
         
         // When the user clicks on <span> (x), close the modal
