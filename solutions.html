@@ -30,7 +30,7 @@
         
         .category-cards {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 30px;
             margin-top: 50px;
         }
@@ -83,12 +83,25 @@
         }
         
         .solution-container {
-            max-width: 800px;
-            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+        
+        .solution-image {
+            flex: 1;
+            max-width: 500px;
+        }
+        
+        .solution-img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
         
         .solution-content {
-            width: 100%;
+            flex: 1;
         }
         
         .solution-features {
@@ -134,46 +147,6 @@
             transform: translateX(5px);
         }
         
-        /* Integrations Section */
-        .integrations-section {
-            background-color: white;
-            padding: 80px 0;
-        }
-        
-        .integration-logos {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            gap: 40px;
-            margin-top: 50px;
-        }
-        
-        .integration-category {
-            margin-top: 60px;
-        }
-        
-        .integration-category-title {
-            font-size: 1.5rem;
-            margin-bottom: 30px;
-            text-align: center;
-            color: var(--dark);
-        }
-        
-        .integration-logo {
-            height: 60px;
-            width: auto;
-            opacity: 0.7;
-            transition: all 0.3s ease;
-            filter: grayscale(100%);
-        }
-        
-        .integration-logo:hover {
-            opacity: 1;
-            filter: grayscale(0%);
-            transform: scale(1.05);
-        }
-        
         /* CTA Section */
         .cta-section {
             background: linear-gradient(120deg, var(--primary) 0%, var(--primary-light) 100%);
@@ -210,8 +183,21 @@
         
         /* Responsive Styles */
         @media (max-width: 992px) {
-            .category-cards {
-                grid-template-columns: 1fr;
+            .solution-container {
+                flex-direction: column;
+            }
+            
+            .solution-image, .solution-content {
+                flex: none;
+                max-width: 100%;
+            }
+            
+            .solution-image {
+                order: 1;
+            }
+            
+            .solution-content {
+                order: 2;
             }
         }
     </style>
@@ -284,6 +270,9 @@
     <!-- Business Process Automation Section -->
     <section id="business-process-automation" class="solution-section">
         <div class="container solution-container">
+            <div class="solution-image">
+                <img src="images/process-automation.jpg" alt="AI process automation workflow diagram" class="solution-img">
+            </div>
             <div class="solution-content">
                 <h2>Business Process Automation</h2>
                 <p>Our comprehensive process automation solutions begin with a thorough evaluation of your business operations to identify repeatable tasks that can be streamlined with AI.</p>
@@ -397,12 +386,18 @@
                     </svg>
                 </a>
             </div>
+            <div class="solution-image">
+                <img src="images/lead-management.jpg" alt="Lead resurrection automation dashboard" class="solution-img">
+            </div>
         </div>
     </section>
 
     <!-- Customer Engagement Section -->
     <section id="customer-engagement" class="solution-section">
         <div class="container solution-container">
+            <div class="solution-image">
+                <img src="images/customer-engagement.jpg" alt="AI customer engagement interface" class="solution-img">
+            </div>
             <div class="solution-content">
                 <h2>Customer Engagement Solutions</h2>
                 <p>Deliver exceptional customer experiences around the clock with AI-powered engagement tools that respond instantly to inquiries and anticipate needs.</p>
@@ -522,35 +517,8 @@
                     </svg>
                 </a>
             </div>
-        </div>
-    </section>
-
-    <!-- Integrations Section -->
-    <section class="integrations-section section">
-        <div class="container">
-            <h2 class="text-center">Works With Your Favorite Business Tools</h2>
-            <p class="text-center" style="max-width: 800px; margin: 0 auto 30px;">Our automation platform connects seamlessly with the software you already use, creating powerful workflows without disrupting your existing systems.</p>
-            
-            <div class="integration-category">
-                <h3 class="integration-category-title">CRM & Marketing</h3>
-                <div class="integration-logos">
-                    <img src="images/integration-salesforce.png" alt="Salesforce logo" class="integration-logo">
-                    <img src="images/integration-hubspot.png" alt="HubSpot logo" class="integration-logo">
-                    <img src="images/integration-mailchimp.png" alt="Mailchimp logo" class="integration-logo">
-                    <img src="images/integration-zoho.png" alt="Zoho logo" class="integration-logo">
-                    <img src="images/integration-activecampaign.png" alt="ActiveCampaign logo" class="integration-logo">
-                </div>
-            </div>
-            
-            <div class="integration-category">
-                <h3 class="integration-category-title">Business Operations</h3>
-                <div class="integration-logos">
-                    <img src="images/integration-shopify.png" alt="Shopify logo" class="integration-logo">
-                    <img src="images/integration-quickbooks.png" alt="QuickBooks logo" class="integration-logo">
-                    <img src="images/integration-asana.png" alt="Asana logo" class="integration-logo">
-                    <img src="images/integration-slack.png" alt="Slack logo" class="integration-logo">
-                    <img src="images/integration-google.png" alt="Google Workspace logo" class="integration-logo">
-                </div>
+            <div class="solution-image">
+                <img src="images/reputation-management.jpg" alt="Online reputation management dashboard" class="solution-img">
             </div>
         </div>
     </section>
@@ -581,11 +549,7 @@
             <script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>
         </div>
     </div>
-    <script 
-        src="https://widgets.leadconnectorhq.com/loader.js"  
-        data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" 
-        data-widget-id="68092572119caada2d782979"   > 
-    </script>
+
     <!-- Load utilities JavaScript -->
     <script src="utils.js"></script>
 </body>
