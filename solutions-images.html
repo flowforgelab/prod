@@ -30,7 +30,7 @@
         
         .category-cards {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 30px;
             margin-top: 50px;
         }
@@ -83,12 +83,25 @@
         }
         
         .solution-container {
-            max-width: 800px;
-            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+        
+        .solution-image {
+            flex: 1;
+            max-width: 500px;
+        }
+        
+        .solution-img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
         
         .solution-content {
-            width: 100%;
+            flex: 1;
         }
         
         .solution-features {
@@ -210,8 +223,21 @@
         
         /* Responsive Styles */
         @media (max-width: 992px) {
-            .category-cards {
-                grid-template-columns: 1fr;
+            .solution-container {
+                flex-direction: column;
+            }
+            
+            .solution-image, .solution-content {
+                flex: none;
+                max-width: 100%;
+            }
+            
+            .solution-image {
+                order: 1;
+            }
+            
+            .solution-content {
+                order: 2;
             }
         }
     </style>
@@ -284,6 +310,9 @@
     <!-- Business Process Automation Section -->
     <section id="business-process-automation" class="solution-section">
         <div class="container solution-container">
+            <div class="solution-image">
+                <img src="images/process-automation.jpg" alt="AI process automation workflow diagram" class="solution-img">
+            </div>
             <div class="solution-content">
                 <h2>Business Process Automation</h2>
                 <p>Our comprehensive process automation solutions begin with a thorough evaluation of your business operations to identify repeatable tasks that can be streamlined with AI.</p>
@@ -397,12 +426,18 @@
                     </svg>
                 </a>
             </div>
+            <div class="solution-image">
+                <img src="images/lead-management.jpg" alt="Lead resurrection automation dashboard" class="solution-img">
+            </div>
         </div>
     </section>
 
     <!-- Customer Engagement Section -->
     <section id="customer-engagement" class="solution-section">
         <div class="container solution-container">
+            <div class="solution-image">
+                <img src="images/customer-engagement.jpg" alt="AI customer engagement interface" class="solution-img">
+            </div>
             <div class="solution-content">
                 <h2>Customer Engagement Solutions</h2>
                 <p>Deliver exceptional customer experiences around the clock with AI-powered engagement tools that respond instantly to inquiries and anticipate needs.</p>
@@ -521,6 +556,9 @@
                         <polyline points="12 5 19 12 12 19"></polyline>
                     </svg>
                 </a>
+            </div>
+            <div class="solution-image">
+                <img src="images/reputation-management.jpg" alt="Online reputation management dashboard" class="solution-img">
             </div>
         </div>
     </section>
