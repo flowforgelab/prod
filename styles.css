@@ -547,7 +547,7 @@ footer {
     }
 }
 
-/* Modal Styles */
+/* Modal Styles - Add these to your styles.css file */
 .modal {
     display: none;
     position: fixed;
@@ -568,25 +568,35 @@ footer {
     border-radius: 10px;
     width: 80%;
     max-width: 700px;
-    min-height: 750px;
+    max-height: 90vh; /* Limit height to viewport height */
+    overflow-y: auto; /* Enable scrolling within the modal content */
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
     position: relative;
 }
 
 .modal-close {
     color: var(--gray);
-    position: absolute;
+    position: fixed; /* Change to fixed positioning */
     top: 15px;
     right: 20px;
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.2s ease;
-    z-index: 10;
+    z-index: 1010; /* Ensure it's above other elements */
+    background-color: white; /* Add background to make visible */
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .modal-close:hover {
     color: var(--dark);
+    transform: scale(1.1);
 }
 
 .modal h2 {
@@ -605,7 +615,7 @@ iframe[src*="leadconnectorhq.com"] {
     height: 700px !important;
     border: none !important;
     margin-top: 10px;
-    overflow: hidden;
+    overflow: auto !important; /* Allow scrolling within iframe */
 }
 
 @media (max-width: 767px) {
@@ -613,8 +623,7 @@ iframe[src*="leadconnectorhq.com"] {
         width: 95%;
         margin: 2% auto;
         padding: 20px 15px;
-        max-height: 96vh;
-        min-height: auto;
+        max-height: 90vh;
         overflow-y: auto;
     }
     
@@ -623,6 +632,7 @@ iframe[src*="leadconnectorhq.com"] {
         height: 600px !important;
         transform: scale(0.98);
         transform-origin: top center;
+        overflow: auto !important;
     }
     
     .modal h2 {
