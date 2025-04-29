@@ -53,7 +53,6 @@ function initModal() {
         bookDemoBtn.onclick = function(e) {
             e.preventDefault();
             modal.style.display = "block";
-            document.body.style.overflow = "hidden"; // Prevent background scrolling
             
             // Get the modal content container
             const modalContent = document.querySelector('.modal-content');
@@ -92,7 +91,7 @@ function initModal() {
                 iframe.style.width = '100%';
                 iframe.style.height = '750px';
                 iframe.style.border = 'none';
-                iframe.scrolling = 'no';
+                iframe.style.overflowY = 'auto'; // Ensure iframe content can scroll
                 iframe.setAttribute('id', '23wZMq8rZf755oQDesYy_1745531168392');
                 
                 // Add the iframe to the modal
@@ -109,14 +108,12 @@ function initModal() {
         // When the user clicks on <span> (x), close the modal
         closeBtn.onclick = function() {
             modal.style.display = "none";
-            document.body.style.overflow = "auto"; // Re-enable scrolling
         }
         
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = "none";
-                document.body.style.overflow = "auto"; // Re-enable scrolling
             }
         }
     }
@@ -142,4 +139,14 @@ document.addEventListener('DOMContentLoaded', function() {
     if (typeof feather !== 'undefined') {
         feather.replace();
     }
+    
+    // Add global listener for modal close buttons
+    document.addEventListener('click', function(event) {
+        if (event.target.matches('.modal-close')) {
+            const modal = event.target.closest('.modal');
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        }
+    });
 });
