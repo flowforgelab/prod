@@ -1,0 +1,64 @@
+<nav class="nav">
+    <div class="container nav-container">
+        <a href="index.html" class="nav-logo">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" stroke="#00E88F"></circle>
+                <path d="M12 2 L12 12 L22 12" stroke="#00E88F" fill="none"></path>
+                <path d="M12 12 L6 18" stroke="#5B5BFF" stroke-width="2"></path>
+            </svg>
+            Flow Forge Lab
+        </a>
+        
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="solutions.html" class="nav-link">Solutions</a></li>
+            <li><a href="use-cases.html" class="nav-link">Use Cases</a></li>
+            <li><a href="pools.html" class="nav-link">Pools</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+            <li><a href="#" class="btn btn-primary btn-small" id="headerBookingBtn">Book Demo</a></li>
+        </ul>
+        
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</nav>
+
+<script>
+// Mobile navigation toggle
+document.getElementById('navToggle').addEventListener('click', function() {
+    const navMenu = document.getElementById('navMenu');
+    navMenu.classList.toggle('active');
+    this.classList.toggle('active');
+});
+
+// Add active class to current page
+const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+document.querySelectorAll('.nav-link').forEach(link => {
+    if (link.getAttribute('href') === currentPage) {
+        link.classList.add('active');
+    }
+});
+
+// Header booking button
+document.getElementById('headerBookingBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+    const modal = document.getElementById('bookingModal');
+    if (modal) {
+        modal.style.display = 'block';
+        // Add iframe if not already present
+        if (!modal.querySelector('iframe')) {
+            const modalContent = modal.querySelector('.modal-content');
+            const iframe = document.createElement('iframe');
+            iframe.src = 'https://api.leadconnectorhq.com/widget/booking/UB9p0HsDPr0u8UfeR4sC';
+            iframe.style.width = '100%';
+            iframe.style.height = '600px';
+            iframe.style.border = 'none';
+            iframe.style.borderRadius = '8px';
+            modalContent.appendChild(iframe);
+        }
+    }
+});
+</script>

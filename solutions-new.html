@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI-powered business automation solutions for small businesses. Streamline operations, engage customers, and unlock growth with Flow Forge Lab.">
+    <title>Solutions | Flow Forge Lab</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles-new.css">
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-container"></div>
+
+    <!-- Solutions Hero -->
+    <section class="hero section" style="padding-bottom: 4rem;">
+        <div class="container">
+            <div class="hero-text text-center" style="max-width: 900px; margin: 0 auto;">
+                <h1 style="font-size: var(--font-size-h1);">AI Solutions That Transform Your Business</h1>
+                <p class="hero-subheadline">
+                    From lead capture to customer retention, our suite of AI-powered tools automates 
+                    your entire customer journey while you focus on what matters most.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Overview Grid -->
+    <section class="section" style="background: var(--color-bg-secondary); padding-top: 0;">
+        <div class="container">
+            <div class="solutions-overview-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <a href="#business-automation" class="solution-overview-card card" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="card-icon" style="background: rgba(0, 232, 143, 0.1); color: var(--color-accent-primary);">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M12 1v6m0 6v6m11-11h-6m-6 0H1"></path>
+                        </svg>
+                    </div>
+                    <h3>Business Process Automation</h3>
+                    <p>Streamline operations with AI that handles repetitive tasks automatically</p>
+                    <span style="color: var(--color-accent-primary); display: flex; align-items: center; gap: 0.5rem; margin-top: 1rem;">
+                        Learn more
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </span>
+                </a>
+
+                <a href="#lead-management" class="solution-overview-card card" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="card-icon" style="background: rgba(91, 91, 255, 0.1); color: var(--color-accent-secondary);">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                            <path d="M12 14l9-5-9-5-9 5z"></path>
+                        </svg>
+                    </div>
+                    <h3>Lead Management & Resurrection</h3>
+                    <p>Convert cold leads into hot opportunities with intelligent nurturing</p>
+                    <span style="color: var(--color-accent-secondary); display: flex; align-items: center; gap: 0.5rem; margin-top: 1rem;">
+                        Learn more
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </span>
+                </a>
+
+                <a href="#customer-engagement" class="solution-overview-card card" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="card-icon" style="background: rgba(255, 184, 0, 0.1); color: var(--color-warning);">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                        </svg>
+                    </div>
+                    <h3>Customer Engagement</h3>
+                    <p>Deliver personalized experiences 24/7 with conversational AI</p>
+                    <span style="color: var(--color-warning); display: flex; align-items: center; gap: 0.5rem; margin-top: 1rem;">
+                        Learn more
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </span>
+                </a>
+
+                <a href="#reputation-management" class="solution-overview-card card" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="card-icon" style="background: rgba(255, 91, 91, 0.1); color: var(--color-error);">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                    </div>
+                    <h3>Reputation Management</h3>
+                    <p>Build trust with automated review generation and monitoring</p>
+                    <span style="color: var(--color-error); display: flex; align-items: center; gap: 0.5rem; margin-top: 1rem;">
+                        Learn more
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Process Automation -->
+    <section id="business-automation" class="section">
+        <div class="container">
+            <div class="solution-detail" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+                <div class="solution-content">
+                    <h2>Business Process Automation</h2>
+                    <p style="font-size: var(--font-size-body-lg); margin-bottom: 2rem;">
+                        Stop wasting hours on repetitive tasks. Our AI evaluates your workflows, 
+                        identifies automation opportunities, and implements solutions that save you 
+                        15-20 hours every week.
+                    </p>
+                    
+                    <div class="feature-list">
+                        <div class="feature-item" style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+                            <div class="feature-icon" style="flex-shrink: 0; width: 48px; height: 48px; background: var(--color-surface-overlay); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--color-accent-primary);">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 11l3 3L22 4"></path>
+                                    <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 style="margin-bottom: 0.25rem;">Process Discovery & Analysis</h4>
+                                <p style="margin: 0;">We map your entire workflow to find the highest-impact automation opportunities</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-item" style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+                            <div class="feature-icon" style="flex-shrink: 0; width: 48px; height: 48px; background: var(--color-surface-overlay); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--color-accent-primary);">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                                    <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                                    <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 style="margin-bottom: 0.25rem;">Custom AI Workflow Design</h4>
+                                <p style="margin: 0;">Tailored automation that integrates seamlessly with your existing tools</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-item" style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+                            <div class="feature-icon" style="flex-shrink: 0; width: 48px; height: 48px; background: var(--color-surface-overlay); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--color-accent-primary);">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2v20m0-20l8 4v10l-8 4-8-4V6l8-4z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 style="margin-bottom: 0.25rem;">Implementation & Training</h4>
+                                <p style="margin: 0;">Full deployment support with comprehensive team training included</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="solution-cta" style="margin-top: 2rem;">
+                        <a href="use-cases.html#daily-ops" class="btn btn-primary">
+                            View Success Stories
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="solution-visual">
+                    <div class="automation-showcase" style="background: var(--color-bg-card); border: 1px solid var(--color-border-default); border-radius: 16px; padding: 2rem; position: relative;">
+                        <div class="automation-flow">
+                            <div class="flow-item" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; padding: 1rem; background: var(--color-surface-overlay); border-radius: 8px;">
+                                <div style="width: 40px; height: 40px; background: rgba(0, 232, 143, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00E88F" stroke-width="2">
+                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                        <polyline points="22,6 12,13 2,6"></polyline>
+                                    </svg>
+                                </div>
+                                <div style="flex: 1;">
+                                    <p style="font-weight: 600; margin: 0;">Lead Inquiry Received</p>
+                                    <p style="font-size: 0.875rem; color: var(--color-text-tertiary); margin: 0;">Via email, form, or chat</p>
+                                </div>
+                            </div>
+
+                            <div style="display: flex; justify-content: center; margin-bottom: 1rem;">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <polyline points="19 12 12 19 5 12"></polyline>
+                                </svg>
+                            </div>
+
+                            <div class="flow-item" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; padding: 1rem; background: var(--color-surface-overlay); border-radius: 8px;">
+                                <div style="width: 40px; height: 40px; background: rgba(91, 91, 255, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5B5BFF" stroke-width="2">
+                                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                                    </svg>
+                                </div>
+                                <div style="flex: 1;">
+                                    <p style="font-weight: 600; margin: 0;">AI Processes & Qualifies</p>
+                                    <p style="font-size: 0.875rem; color: var(--color-text-tertiary); margin: 0;">Automatic lead scoring</p>
+                                </div>
+                            </div>
+
+                            <div style="display: flex; justify-content: center; margin-bottom: 1rem;">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <polyline points="19 12 12 19 5 12"></polyline>
+                                </svg>
+                            </div>
+
+                            <div class="flow-item" style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: var(--color-surface-overlay); border-radius: 8px;">
+                                <div style="width: 40px; height: 40px; background: rgba(255, 184, 0, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFB800" stroke-width="2">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                                    </svg>
+                                </div>
+                                <div style="flex: 1;">
+                                    <p style="font-weight: 600; margin: 0;">Automatic Scheduling</p>
+                                    <p style="font-size: 0.875rem; color: var(--color-text-tertiary); margin: 0;">Books directly in your calendar</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="automation-badge" style="position: absolute; top: -12px; right: 20px; background: var(--color-accent-primary); color: var(--color-bg-primary); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.875rem; font-weight: 600;">
+                            Saves 2 hours/day
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lead Management -->
+    <section id="lead-management" class="section" style="background: var(--color-bg-secondary);">
+        <div class="container">
+            <div class="solution-detail" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+                <div class="solution-visual" style="order: 1;">
+                    <div class="lead-stats" style="background: var(--color-bg-card); border: 1px solid var(--color-border-default); border-radius: 16px; padding: 2rem;">
+                        <h3 style="margin-bottom: 2rem;">Lead Resurrection Results</h3>
+                        
+                        <div class="stat-item" style="margin-bottom: 2rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                <span>Response Rate</span>
+                                <span style="font-weight: 700; color: var(--color-accent-primary);">78%</span>
+                            </div>
+                            <div style="background: var(--color-bg-secondary); border-radius: 8px; height: 8px; overflow: hidden;">
+                                <div style="background: var(--color-accent-primary); height: 100%; width: 78%; transition: width 1s ease;"></div>
+                            </div>
+                        </div>
+
+                        <div class="stat-item" style="margin-bottom: 2rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                <span>Conversion Increase</span>
+                                <span style="font-weight: 700; color: var(--color-accent-secondary);">+45%</span>
+                            </div>
+                            <div style="background: var(--color-bg-secondary); border-radius: 8px; height: 8px; overflow: hidden;">
+                                <div style="background: var(--color-accent-secondary); height: 100%; width: 45%; transition: width 1s ease;"></div>
+                            </div>
+                        </div>
+
+                        <div class="stat-item">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                <span>Revenue Recovery</span>
+                                <span style="font-weight: 700; color: var(--color-warning);">$125K/mo</span>
+                            </div>
+                            <div style="background: var(--color-bg-secondary); border-radius: 8px; height: 8px; overflow: hidden;">
+                                <div style="background: var(--color-warning); height: 100%; width: 90%; transition: width 1s ease;"></div>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--color-border-default);">
+                            <p style="text-align: center; font-size: 0.875rem; color: var(--color-text-secondary);">Average results from 500+ businesses</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="solution-content" style="order: 2;">
+                    <h2>Lead Management & Resurrection</h2>
+                    <p style="font-size: var(--font-size-body-lg); margin-bottom: 2rem;">
+                        Your database is a goldmine of untapped revenue. Our AI reactivates dormant 
+                        leads with personalized outreach that feels human and drives real conversations.
+                    </p>
+                    
+                    <div class="feature-list">
+                        <div class="feature-item" style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+                            <div class="feature-icon" style="flex-shrink: 0; width: 48px; height: 48px; background: var(--color-surface-overlay); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--color-accent-secondary);">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
+                                    <line x1="4" y1="22" x2="4" y2="15"></line>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 style="margin-bottom: 0.25rem;">Smart Lead Scoring</h4>
+                                <p style="margin: 0;">AI identifies your hottest prospects based on behavior and engagement</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-item" style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+                            <div class="feature-icon" style="flex-shrink: 0; width: 48px; height: 48px; background: var(--color-surface-overlay); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--color-accent-secondary);">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"></path>
+                                    <path d="M9 10h.01M15 10h.01M9.5 14c.82.82 1.95 1.35 3.5 1.35s2.68-.53 3.5-1.35"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 style="margin-bottom: 0.25rem;">Multi-Channel Outreach</h4>
+                                <p style="margin: 0;">Engage via SMS, email, and chat with personalized messaging</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-item" style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+                            <div class="feature-icon" style="flex-shrink: 0; width: 48px; height: 48px; background: var(--color-surface-overlay); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--color-accent-secondary);">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 style="margin-bottom: 0.25rem;">Instant Response System</h4>
+                                <p style="margin: 0;">Respond to new leads in under 60 seconds, 24/7</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="solution-cta" style="margin-top: 2rem;">
+                        <a href="use-cases.html#lead-resurrection" class="btn btn-primary">
+                            See How It Works
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Engagement -->
+    <section id="customer-engagement" class="section">
+        <div class="container">
+            <div class="solution-detail" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+                <div class="solution-content">
+                    <h2>Intelligent Customer Engagement</h2>
+                    <p style="font-size: var(--font-size-body-lg); margin-bottom: 2rem;">
+                        Your customers expect instant, personalized responses. Our AI delivers human-like 
+                        conversations that answer questions, book appointments, and drive sales—even at 3 AM.
+                    </p>
+                    
+                    <div class="feature-list">
+                        <div class="feature-item" style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+                            <div class="feature-icon" style="flex-shrink: 0; width: 48px; height: 48px; background: var(--color-surface-overlay); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--color-warning);">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 style="margin-bottom: 0.25rem;">AI-Powered Chat</h4>
+                                <p style="margin: 0;">Natural conversations that understand context and intent</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-item" style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+                            <div class="feature-icon" style="flex-shrink: 0; width: 48px; height: 48px; background: var(--color-surface-overlay); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--color-warning);">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 style="margin-bottom: 0.25rem;">Automated Quoting</h4>
+                                <p style="margin: 0;">Generate accurate quotes based on customer requirements instantly</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-item" style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+                            <div class="feature-icon" style="flex-shrink: 0; width: 48px; height: 48px; background: var(--color-surface-overlay); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--color-warning);">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 style="margin-bottom: 0.25rem;">Smart Handoff</h4>
+                                <p style="margin: 0;">Seamlessly transfers complex queries to human agents when needed</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="solution-cta" style="margin-top: 2rem;">
+                        <a href="#" class="btn btn-primary" id="engagementDemoBtn">
+                            Try Live Demo
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="solution-visual">
+                    <div class="chat-preview" style="background: var(--color-bg-card); border: 1px solid var(--color-border-default); border-radius: 16px; padding: 1.5rem; height: 500px; display: flex; flex-direction: column;">
+                        <div class="chat-header" style="display: flex; align-items: center; gap: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--color-border-default);">
+                            <div style="width: 40px; height: 40px; background: var(--color-accent-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                    <path d="M12 2L2 7L12 12L22 7L12 2Z"></path>
+                                    <path d="M2 17L12 22L22 17"></path>
+                                    <path d="M2 12L12 17L22 12"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 style="margin: 0;">Flow Forge Assistant</h4>
+                                <p style="margin: 0; font-size: 0.875rem; color: var(--color-accent-primary);">● Online</p>
+                            </div>
+                        </div>
+
+                        <div class="chat-messages" style="flex: 1; overflow-y: auto; padding: 1rem 0;">
+                            <div class="message bot" style="margin-bottom: 1rem;">
+                                <p style="background: var(--color-surface-overlay); padding: 0.75rem 1rem; border-radius: 12px 12px 12px 0; margin: 0;">
+                                    Hi! I'm here to help you explore our AI automation solutions. What brings you here today?
+                                </p>
+                            </div>
+                            
+                            <div class="message user" style="margin-bottom: 1rem; text-align: right;">
+                                <p style="background: var(--color-accent-primary); color: var(--color-bg-primary); padding: 0.75rem 1rem; border-radius: 12px 12px 0 12px; margin: 0; display: inline-block;">
+                                    I need help with lead follow-up
+                                </p>
+                            </div>
+                            
+                            <div class="message bot" style="margin-bottom: 1rem;">
+                                <p style="background: var(--color-surface-overlay); padding: 0.75rem 1rem; border-radius: 12px 12px 12px 0; margin: 0;">
+                                    Great! Our lead automation helps you respond instantly and nurture prospects automatically. Would you like to:
+                                </p>
+                                <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+                                    <button style="background: var(--color-bg-secondary); border: 1px solid var(--color-border-default); padding: 0.5rem 1rem; border-radius: 20px; color: var(--color-text-primary); font-size: 0.875rem; cursor: pointer;">Schedule a demo</button>
+                                    <button style="background: var(--color-bg-secondary); border: 1px solid var(--color-border-default); padding: 0.5rem 1rem; border-radius: 20px; color: var(--color-text-primary); font-size: 0.875rem; cursor: pointer;">Learn more</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="chat-input" style="display: flex; gap: 0.5rem; padding-top: 1rem; border-top: 1px solid var(--color-border-default);">
+                            <input type="text" placeholder="Type your message..." style="flex: 1; background: var(--color-bg-secondary); border: 1px solid var(--color-border-default); padding: 0.75rem 1rem; border-radius: 24px; color: var(--color-text-primary);">
+                            <button style="background: var(--color-accent-primary); border: none; padding: 0.75rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reputation Management -->
+    <section id="reputation-management" class="section" style="background: var(--color-bg-secondary);">
+        <div class="container">
+            <div class="solution-detail" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+                <div class="solution-visual" style="order: 1;">
+                    <div class="reputation-showcase" style="background: var(--color-bg-card); border: 1px solid var(--color-border-default); border-radius: 16px; padding: 2rem;">
+                        <h3 style="margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="var(--color-warning)"></polygon>
+                            </svg>
+                            Recent Reviews
+                        </h3>
+
+                        <div class="review-item" style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--color-border-default);">
+                            <div style="display: flex; gap: 0.25rem; margin-bottom: 0.5rem;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--color-warning)" stroke="var(--color-warning)">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--color-warning)" stroke="var(--color-warning)">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--color-warning)" stroke="var(--color-warning)">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--color-warning)" stroke="var(--color-warning)">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--color-warning)" stroke="var(--color-warning)">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                            </div>
+                            <p style="font-weight: 600; margin-bottom: 0.25rem;">Sarah M.</p>
+                            <p style="font-size: 0.875rem; margin: 0;">"The AI automation has transformed our business. We're capturing 3x more leads!"</p>
+                        </div>
+
+                        <div class="review-item" style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--color-border-default);">
+                            <div style="display: flex; gap: 0.25rem; margin-bottom: 0.5rem;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--color-warning)" stroke="var(--color-warning)">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--color-warning)" stroke="var(--color-warning)">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--color-warning)" stroke="var(--color-warning)">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--color-warning)" stroke="var(--color-warning)">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--color-warning)" stroke="var(--color-warning)">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                            </div>
+                            <p style="font-weight: 600; margin-bottom: 0.25rem;">Mike R.</p>
+                            <p style="font-size: 0.875rem; margin: 0;">"Customer response time went from hours to seconds. Game changer!"</p>
+                        </div>
+
+                        <div class="review-stats" style="display: flex; justify-content: space-around; padding-top: 1rem;">
+                            <div style="text-align: center;">
+                                <p style="font-size: 1.5rem; font-weight: 700; color: var(--color-accent-primary); margin: 0;">4.9</p>
+                                <p style="font-size: 0.75rem; color: var(--color-text-secondary); margin: 0;">Avg Rating</p>
+                            </div>
+                            <div style="text-align: center;">
+                                <p style="font-size: 1.5rem; font-weight: 700; color: var(--color-accent-primary); margin: 0;">287</p>
+                                <p style="font-size: 0.75rem; color: var(--color-text-secondary); margin: 0;">Reviews</p>
+                            </div>
+                            <div style="text-align: center;">
+                                <p style="font-size: 1.5rem; font-weight: 700; color: var(--color-accent-primary); margin: 0;">98%</p>
+                                <p style="font-size: 0.75rem; color: var(--color-text-secondary); margin: 0;">5-Star</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="solution-content" style="order: 2;">
+                    <h2>Reputation Management</h2>
+                    <p style="font-size: var(--font-size-body-lg); margin-bottom: 2rem;">
+                        Turn every satisfied customer into a brand advocate. Our system automatically 
+                        identifies happy customers, guides them to leave reviews, and generates a 
+                        steady stream of referrals.
+                    </p>
+                    
+                    <div class="feature-list">
+                        <div class="feature-item" style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+                            <div class="feature-icon" style="flex-shrink: 0; width: 48px; height: 48px; background: var(--color-surface-overlay); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--color-error);">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 20h9"></path>
+                                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 style="margin-bottom: 0.25rem;">Review Generation</h4>
+                                <p style="margin: 0;">Automated campaigns that guide satisfied customers to share their experience</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-item" style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+                            <div class="feature-icon" style="flex-shrink: 0; width: 48px; height: 48px; background: var(--color-surface-overlay); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--color-error);">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="8.5" cy="7" r="4"></circle>
+                                    <line x1="20" y1="21" x2="20" y2="14"></line>
+                                    <line x1="23" y1="18" x2="17" y2="18"></line>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 style="margin-bottom: 0.25rem;">Referral System</h4>
+                                <p style="margin: 0;">Convert your best customers into active promoters with incentive programs</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-item" style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+                            <div class="feature-icon" style="flex-shrink: 0; width: 48px; height: 48px; background: var(--color-surface-overlay); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--color-error);">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 style="margin-bottom: 0.25rem;">Review Monitoring</h4>
+                                <p style="margin: 0;">Real-time alerts and AI-assisted responses to all customer feedback</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="solution-cta" style="margin-top: 2rem;">
+                        <a href="#" class="btn btn-primary" id="reputationDemoBtn">
+                            Start Building Your Reputation
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section section" style="background: linear-gradient(135deg, rgba(0, 232, 143, 0.1) 0%, rgba(91, 91, 255, 0.1) 100%);">
+        <div class="container text-center">
+            <h2 style="font-size: 3rem; margin-bottom: 1rem;">Ready to Transform Your Business?</h2>
+            <p style="font-size: 1.25rem; max-width: 700px; margin: 0 auto 2rem;">
+                See how our AI solutions can save you time, capture more leads, and deliver 
+                exceptional customer experiences—all on autopilot.
+            </p>
+            
+            <div class="cta-buttons" style="display: flex; gap: 1rem; justify-content: center;">
+                <a href="#" class="btn btn-primary btn-large" id="ctaSolutionsBookingBtn">
+                    Book Your Demo
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                </a>
+                <a href="contact.html" class="btn btn-secondary btn-large">
+                    Contact Sales
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+
+    <!-- Modal -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Book Your Free Demo</h2>
+            <p style="margin-bottom: 1.5rem;">Discover how AI can transform your business operations.</p>
+        </div>
+    </div>
+
+    <!-- Chat Widget -->
+    <chat-widget
+        location-id="AOysQx81svkDHY1bGs60"
+        sub-heading="How can we help automate your business?" 
+        agency-name="Flow Forge Lab" 
+        agency-website="www.flowforgelab.com">
+    </chat-widget>
+    <script
+        src="https://widgets.leadconnectorhq.com/loader.js" 
+        data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js">
+    </script>
+
+    <!-- Scripts -->
+    <script src="utils.js"></script>
+    <script>
+        // Load header and footer
+        fetch('header-new.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('header-container').innerHTML = data);
+            
+        fetch('footer-new.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer-container').innerHTML = data);
+
+        // Modal functionality
+        const modal = document.getElementById('bookingModal');
+        const modalClose = document.querySelector('.modal-close');
+        
+        function openBookingModal() {
+            modal.style.display = 'block';
+            if (!modal.querySelector('iframe')) {
+                const modalContent = modal.querySelector('.modal-content');
+                const iframe = document.createElement('iframe');
+                iframe.src = 'https://api.leadconnectorhq.com/widget/booking/23wZMq8rZf755oQDesYy';
+                iframe.style.width = '100%';
+                iframe.style.height = '600px';
+                iframe.style.border = 'none';
+                iframe.style.borderRadius = '8px';
+                iframe.style.marginTop = '1rem';
+                modalContent.appendChild(iframe);
+            }
+        }
+
+        // Add event listeners for all demo buttons
+        document.getElementById('engagementDemoBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            openBookingModal();
+        });
+
+        document.getElementById('reputationDemoBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            openBookingModal();
+        });
+
+        document.getElementById('ctaSolutionsBookingBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            openBookingModal();
+        });
+
+        modalClose.onclick = function() {
+            modal.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
